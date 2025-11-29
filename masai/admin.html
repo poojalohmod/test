@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+<style>
+    body {  
+        margin: 0;
+        font-family: Arial;
+    }
+      .navbar {
+         background-color: #333;
+         color: white;
+         padding: 10px;
+         text-align: center;
+
+        }
+
+       .sidebar {
+        width: 200px;
+        background-color: #f4f4f4;
+        height: 100vh;
+        float: left;
+        padding: 20px;
+       
+          }
+          .main {
+             margin-left: 220px;   
+             padding: 20px;
+
+            }
+          .card {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-bottom: 10px;
+          }
+</style>
+</head>
+<body>
+    <div> class="navbar"
+       <h2>Fleet Admin Dashboard</h2>
+     </div>
+     
+     <div> class="sidebar"  
+        <h3>sidebar</h3>
+        <ul> 
+            <li>overview</li>
+            <li>vehicles</li>
+            <li>drivers</li>
+            <li>reports</li>
+        </ul>
+     </div>
+     
+     <div>   class="main"
+        <h3>filter by type of work</h3>
+        <form id="filterform">
+           <label input type = "radio" name="worktype" value = "full time" </label>
+           <label input type = "radio" name="worktype" value = "full time" </label>
+            <button type= "submit">filter</button>
+         </form> 
+
+         <h3>person details</h3>
+          <div id = "cordcontainer"</div>
+          </div>
+          <script> 
+              const people = [  
+                {name :"john", age: "30" , address: "123mainst", gender: "male"  work: "full time"}
+                { name :"john", age: "30" , address: "123mainst", gender: "male"  work: "full time"}
+                {name :"sem", age: "30" , address: "1mainst", gender: "male"  work: "full time"}
+              ];
+
+              function renderCards(data) {
+                 const container = document.getElementById("cardContainer");
+                 container.innerHTML"";
+                 data.forEach(person ,index => {
+                  const card = document,createElement("div");
+                  card.className = "card";
+                     <P><strong>Name:</strong> ${person.name}</P>
+                     <P><strong>age:</strong> ${person.age}</P>
+                     <P><strong>address:</strong> ${person.address}</P>
+                     <P><strong>gender:</strong> ${person.gender}</P>
+                     <P><strong>type of work:</strong> ${person.work}</P>
+                     <button oneclick="editAddress(${index})">editAddress</button>
+                     `;
+                     container.appendChild(card);
+                   
+                    });
+
+              
+                 }
+
+                    function editaddress(index) {
+                       const newaddress = propt ("enter new address");
+                       if (newaddress) {
+                          people [index].address = newaddress;
+                          renderCards (people);
+                       
+                       }
+                    }
+                 
+                    document.getElementbyId("filterform").addeventlistener("submit,function(e)"){
+                    e.preventdefault();
+                    const selected = document.queryselector(input[name="worktype"]:checked');
+                    if (selected) {
+                        const filtered = people.filter(p=> p.work === selected.value);
+                        rendercards(filtered):
+                    }
+                       else {
+                            rendercards(filtered);
+                       }
+                    
+                    
+                    }
+                 });
+
+                        rendercards(people);
+
+                    </script
+</body>
+</html>
